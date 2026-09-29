@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alumni & Student Directory</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f9fd;
+            color: #12345b;
+        }
+
+        /* ===== HEADER ===== */
+
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 35px;
+        }
+
+        .logo h2 {
+            font-size: 21px;
+        }
+
+        .logo p {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #173b63;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #1683ff;
+        }
+
+        .active {
+            color: #1683ff;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+    min-height: 700px;
+    padding: 80px 8%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 35, 70, 0.35),
+            rgba(4, 60, 110, 0.10),
+            rgba(4, 60, 110, 0.00)
+        ),
+        url("https://tneacounselling.in/wp-content/uploads/2022/08/University-College-of-Engineering-Arni-750x430.png");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+
+    color: white;
+}
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .welcome {
+            color: #55aaff;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            margin-bottom: 15px 0;
+            text-shadow:0 3px 8px rgba(0,0,0,0)
+        }
+
+        .hero h1 span {
+            color: #50a8ff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e5f1ff;
+            margin-bottom: 30px;
+        }
+
+        /* ===== SEARCH ===== */
+
+        .search-box {
+            max-width: 720px;
+            height: 60px;
+            background: white;
+            border-radius: 35px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 6px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+
+            padding: 0 20px;
+
+            font-size: 15px;
+        }
+
+        .search-box button {
+            height: 48px;
+            padding: 0 28px;
+
+            border: none;
+            border-radius: 28px;
+
+            background: #1683ff;
+            color: white;
+
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .search-box button:hover {
+            background: #006ddd;
+        }
+
+        /* ===== QUICK ACCESS ===== */
+
+        .quick-section {
+            padding: 60px 7%;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 16px;
+
+            border: 1px solid #e2edf7;
+
+            box-shadow: 0 5px 20px rgba(24,75,120,0.07);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            background: #e8f3ff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 27px;
+
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #65788f;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #1683ff;
+            font-weight: bold;
+        }
+
+        /* ===== WHY JOIN ===== */
+
+        .why-section {
+            padding: 60px 8%;
+            background: #eaf5ff;
+        }
+
+        .why-section h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .why-section p {
+            color: #627891;
+            margin-bottom: 30px;
+        }
+
+        .why-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .why-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .why-item span {
+            color: #1683ff;
+            margin-right: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #082746;
+            color: white;
+            padding: 40px 7% 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-bottom: 25px;
+
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-logo p {
+            color: #a9bfd5;
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #dcecff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: #9bb3ca;
+            font-size: 13px;
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media(max-width: 900px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .why-items {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .hero {
+                padding: 60px 5%;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .why-items {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">🎓</div>
+
+            <div>
+                <h2>Alumni & Student Directory</h2>
+                <p>Reconnect • Support • Grow</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="home.html" class="active">Home</a>
+
+            <a href="alumni.html">Alumni</a>
+
+            <a href="students.html">Current Students</a>
+
+            <a href="register.html">Register</a>
+
+            <a href="contact.html">Contact</a>
+
+            <a href="admin-login.html">Admin Login</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ===== HERO ===== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="welcome">
+                Welcome to Our College
+            </div>
+
+            <h1>
+                Alumni & Student
+                <span>Directory</span>
+            </h1>
+
+            <p>
+                A platform to connect our alumni and current students,
+                share opportunities and build a stronger community.
+            </p>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search by name, register number, department or batch..."
+                >
+
+                <button onclick="searchStudent()">
+                    🔍 Search
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== QUICK ACCESS ===== -->
+
+    <section class="quick-section">
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">
+                    👥
+                </div>
+
+                <h3>Our Alumni</h3>
+
+                <p>
+                    Explore and connect with our alumni
+                    and discover their professional journey.
+                </p>
+
+                <a href="alumni.html">
+                    View Alumni →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎓
+                </div>
+
+                <h3>Current Students</h3>
+
+                <p>
+                    Get to know our current students,
+                    departments and student community.
+                </p>
+
+                <a href="students.html">
+                    View Students →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📝
+                </div>
+
+                <h3>Register</h3>
+
+                <p>
+                    Alumni and current students can register
+                    and become part of our growing network.
+                </p>
+
+                <a href="register.html">
+                    Register Now →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== WHY JOIN ===== -->
+
+    <section class="why-section">
+
+        <h2>Why Join Us?</h2>
+
+        <p>
+            Stay connected with your college community
+            and build meaningful connections.
+        </p>
+
+        <div class="why-items">
+
+            <div class="why-item">
+                <span>✓</span>
+                Connect with Alumni
+            </div>
+
+            <div class="why-item">
+                <span>✓</span>
+                Explore Opportunities
+            </div>
+
+            <div class="why-item">
+                <span>✓</span>
+                Build Your Network
+            </div>
+
+            <div class="why-item">
+                <span>✓</span>
+                Stay Connected
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+
+                <h3>🎓 Alumni & Student Directory</h3>
+
+                <p>
+                    Building Connections | Creating Opportunities
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="alumni.html">Alumni</a>
+
+                <a href="students.html">Students</a>
+
+                <a href="register.html">Register</a>
+
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 Alumni & Student Directory. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+
+    <script>
+
+        function searchStudent() {
+
+            let search =
+                document.querySelector(".search-box input").value;
+
+            if (search.trim() === "") {
+
+                alert("Please enter a name, register number, department or batch.");
+
+                return;
+            }
+
+            alert("Search will be connected with the database soon.");
+
+        }
+
+    </script>
+
+</body>
+</html>

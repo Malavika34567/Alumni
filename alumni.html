@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alumni | Alumni & Student Directory</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f9fd;
+            color: #12345b;
+        }
+
+        /* ===== HEADER ===== */
+
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 35px;
+        }
+
+        .logo h2 {
+            font-size: 21px;
+        }
+
+        .logo p {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #173b63;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #1683ff;
+        }
+
+        .active {
+            color: #1683ff !important;
+        }
+
+
+        /* ===== PAGE HEADER ===== */
+
+        .page-header {
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5, 39, 75, 0.92),
+                    rgba(5, 70, 125, 0.75)
+                ),
+                url("https://tneacounselling.in/wp-content/uploads/2022/08/University-College-of-Engineering-Arni-750x430.png");
+
+            background-size: cover;
+            background-position: center;
+
+            padding: 70px 8%;
+
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 17px;
+            color: #e2efff;
+        }
+
+
+        /* ===== SEARCH & FILTER ===== */
+
+        .search-section {
+            padding: 40px 7% 20px;
+        }
+
+        .search-area {
+            background: white;
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(24,75,120,0.07);
+
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+
+            height: 50px;
+
+            border: 1px solid #d9e5f0;
+            border-radius: 8px;
+
+            padding: 0 18px;
+
+            outline: none;
+            font-size: 15px;
+        }
+
+        .filter {
+            height: 50px;
+
+            border: 1px solid #d9e5f0;
+            border-radius: 8px;
+
+            padding: 0 15px;
+
+            background: white;
+
+            color: #45617c;
+
+            font-size: 14px;
+        }
+
+        .search-btn {
+            height: 50px;
+
+            border: none;
+            border-radius: 8px;
+
+            padding: 0 25px;
+
+            background: #1683ff;
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        .search-btn:hover {
+            background: #006ddd;
+        }
+
+
+        /* ===== ALUMNI SECTION ===== */
+
+        .alumni-section {
+            padding: 20px 7% 70px;
+        }
+
+        .section-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .section-top h2 {
+            font-size: 25px;
+        }
+
+        .count {
+            color: #718096;
+            font-size: 14px;
+        }
+
+
+        /* ===== ALUMNI CARDS ===== */
+
+        .alumni-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 25px;
+        }
+
+        .alumni-card {
+            background: white;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            border: 1px solid #e2edf7;
+
+            box-shadow:
+                0 5px 20px
+                rgba(24,75,120,0.07);
+
+            transition: 0.3s;
+        }
+
+        .alumni-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 12px 28px
+                rgba(24,75,120,0.13);
+        }
+
+
+        /* ===== PROFILE IMAGE ===== */
+
+        .profile-image {
+            width: 100%;
+            height: 190px;
+
+            object-fit: cover;
+        }
+
+
+        /* ===== CARD CONTENT ===== */
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .role {
+            color: #1683ff;
+            font-size: 14px;
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+        .details {
+            color: #667b91;
+            font-size: 13px;
+            line-height: 1.8;
+
+            margin-bottom: 15px;
+        }
+
+        .batch {
+            display: inline-block;
+
+            background: #eaf5ff;
+
+            color: #1683ff;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            margin-bottom: 15px;
+        }
+
+        .view-btn {
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding: 10px;
+
+            border-radius: 7px;
+
+            background: #1683ff;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .view-btn:hover {
+            background: #006ddd;
+        }
+
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #082746;
+
+            color: white;
+
+            padding: 40px 7% 20px;
+        }
+
+        .footer-content {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding-bottom: 25px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.2);
+        }
+
+        .footer-logo p {
+            color: #a9bfd5;
+
+            font-size: 13px;
+
+            margin-top: 7px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #dcecff;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .copyright {
+            text-align: center;
+
+            padding-top: 20px;
+
+            color: #9bb3ca;
+
+            font-size: 13px;
+        }
+
+
+        /* ===== RESPONSIVE ===== */
+
+        @media(max-width: 1100px) {
+
+            .alumni-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+        }
+
+
+        @media(max-width: 800px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .alumni-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media(max-width: 550px) {
+
+            .page-header h1 {
+                font-size: 35px;
+            }
+
+            .alumni-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 25px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ===== HEADER ===== -->
+
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🎓
+            </div>
+
+            <div>
+
+                <h2>
+                    Alumni & Student Directory
+                </h2>
+
+                <p>
+                    Reconnect • Support • Grow
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="alumni.html"
+               class="active">
+                Alumni
+            </a>
+
+            <a href="students.html">
+                Current Students
+            </a>
+
+            <a href="register.html">
+                Register
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="admin-login.html">
+                Admin Login
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ===== PAGE HEADER ===== -->
+
+    <section class="page-header">
+
+        <h1>
+            Our Alumni
+        </h1>
+
+        <p>
+            Connect with our alumni and explore
+            their professional journeys.
+        </p>
+
+    </section>
+
+
+    <!-- ===== SEARCH & FILTER ===== -->
+
+    <section class="search-section">
+
+        <div class="search-area">
+
+            <input
+                type="text"
+                class="search-input"
+                id="searchInput"
+                placeholder="Search by name, register number, company..."
+            >
+
+
+            <select
+                class="filter"
+                id="department">
+
+                <option value="">
+                    All Departments
+                </option>
+
+                <option value="CSE">
+                    CSE
+                </option>
+
+                <option value="ECE">
+                    ECE
+                </option>
+
+                <option value="IT">
+                    IT
+                </option>
+
+                <option value="EEE">
+                    EEE
+                </option>
+
+                <option value="MECH">
+                    Mechanical
+                </option>
+
+            </select>
+
+
+            <select
+                class="filter"
+                id="batch">
+
+                <option value="">
+                    All Batches
+                </option>
+
+                <option value="2021-2025">
+                    2021 - 2025
+                </option>
+
+                <option value="2020-2024">
+                    2020 - 2024
+                </option>
+
+                <option value="2019-2023">
+                    2019 - 2023
+                </option>
+
+            </select>
+
+
+            <button
+                class="search-btn"
+                onclick="searchAlumni()">
+
+                🔍 Search
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== ALUMNI LIST ===== -->
+
+    <section class="alumni-section">
+
+        <div class="section-top">
+
+            <h2>
+                Alumni Directory
+            </h2>
+
+            <div class="count">
+                Showing 8 Alumni
+            </div>
+
+        </div>
+
+
+        <div class="alumni-grid">
+
+
+            <!-- ALUMNI 1 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="Arun Kumar"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Arun Kumar
+                    </h3>
+
+                    <div class="role">
+                        Software Engineer
+                    </div>
+
+                    <div class="details">
+
+                        💻 CSE<br>
+
+                        📍 Chennai<br>
+
+                        🏢 TCS
+
+                    </div>
+
+                    <span class="batch">
+                        2021 - 2025
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALUMNI 2 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="Priya S"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Priya S
+                    </h3>
+
+                    <div class="role">
+                        Software Developer
+                    </div>
+
+                    <div class="details">
+
+                        💻 IT<br>
+
+                        📍 Bangalore<br>
+
+                        🏢 Infosys
+
+                    </div>
+
+                    <span class="batch">
+                        2020 - 2024
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALUMNI 3 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/men/45.jpg"
+                    alt="Karthik M"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Karthik M
+                    </h3>
+
+                    <div class="role">
+                        Web Developer
+                    </div>
+
+                    <div class="details">
+
+                        💻 CSE<br>
+
+                        📍 Coimbatore<br>
+
+                        🏢 Wipro
+
+                    </div>
+
+                    <span class="batch">
+                        2021 - 2025
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALUMNI 4 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/women/65.jpg"
+                    alt="Divya R"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Divya R
+                    </h3>
+
+                    <div class="role">
+                        Data Analyst
+                    </div>
+
+                    <div class="details">
+
+                        💻 ECE<br>
+
+                        📍 Chennai<br>
+
+                        🏢 Accenture
+
+                    </div>
+
+                    <span class="batch">
+                        2020 - 2024
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALUMNI 5 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/men/52.jpg"
+                    alt="Vignesh R"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Vignesh R
+                    </h3>
+
+                    <div class="role">
+                        Java Developer
+                    </div>
+
+                    <div class="details">
+
+                        💻 CSE<br>
+
+                        📍 Chennai<br>
+
+                        🏢 Zoho
+
+                    </div>
+
+                    <span class="batch">
+                        2019 - 2023
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALUMNI 6 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/women/33.jpg"
+                    alt="Keerthana P"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Keerthana P
+                    </h3>
+
+                    <div class="role">
+                        UI/UX Designer
+                    </div>
+
+                    <div class="details">
+
+                        💻 IT<br>
+
+                        📍 Bangalore<br>
+
+                        🏢 Freshworks
+
+                    </div>
+
+                    <span class="batch">
+                        2021 - 2025
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALUMNI 7 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/men/61.jpg"
+                    alt="Sanjay K"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Sanjay K
+                    </h3>
+
+                    <div class="role">
+                        Cloud Engineer
+                    </div>
+
+                    <div class="details">
+
+                        💻 CSE<br>
+
+                        📍 Hyderabad<br>
+
+                        🏢 Amazon
+
+                    </div>
+
+                    <span class="batch">
+                        2020 - 2024
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALUMNI 8 -->
+
+            <div class="alumni-card">
+
+                <img
+                    class="profile-image"
+                    src="https://randomuser.me/api/portraits/women/50.jpg"
+                    alt="Nandhini S"
+                >
+
+                <div class="card-content">
+
+                    <h3>
+                        Nandhini S
+                    </h3>
+
+                    <div class="role">
+                        Software Engineer
+                    </div>
+
+                    <div class="details">
+
+                        💻 EEE<br>
+
+                        📍 Chennai<br>
+
+                        🏢 Cognizant
+
+                    </div>
+
+                    <span class="batch">
+                        2019 - 2023
+                    </span>
+
+                    <a
+                        href="#"
+                        class="view-btn">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+
+                <h3>
+                    🎓 Alumni & Student Directory
+                </h3>
+
+                <p>
+                    Building Connections | Creating Opportunities
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="alumni.html">
+                    Alumni
+                </a>
+
+                <a href="students.html">
+                    Students
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Alumni & Student Directory.
+            All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+
+    <script>
+
+        function searchAlumni() {
+
+            const search =
+                document.getElementById("searchInput").value;
+
+            const department =
+                document.getElementById("department").value;
+
+            const batch =
+                document.getElementById("batch").value;
+
+
+            if (
+                search.trim() === "" &&
+                department === "" &&
+                batch === ""
+            ) {
+
+                alert("Please enter a search or select a filter.");
+
+                return;
+            }
+
+
+            alert(
+                "Search will be connected with the database."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+</html>

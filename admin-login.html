@@ -1,0 +1,400 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login - Alumni & Student Directory</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f8fc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+
+        header {
+            background: #0b4f9c;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h2 {
+            font-size: 22px;
+        }
+
+        .logo p {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Login Section */
+
+        .login-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+
+        /* Login Box */
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+        }
+
+        .login-box h1 {
+            text-align: center;
+            color: #0b4f9c;
+            margin-bottom: 8px;
+        }
+
+        .login-box .subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+
+        /* Admin Icon */
+
+        .admin-icon {
+            width: 70px;
+            height: 70px;
+            background: #e8f1ff;
+            color: #0b4f9c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+        }
+
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #0b4f9c;
+        }
+
+
+        /* Login Button */
+
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+            background: #0b4f9c;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #083b75;
+        }
+
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #0b4f9c;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Footer */
+
+        footer {
+            background: #083b75;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .login-box {
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="logo">
+
+            <h2>Alumni & Student Directory</h2>
+
+            <p>
+                Reconnect • Support • Grow
+            </p>
+
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">Home</a>
+
+            <a href="alumni.html">Alumni</a>
+
+            <a href="students.html">Current Students</a>
+
+            <a href="register.html">Register</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- Login Section -->
+
+    <section class="login-section">
+
+        <div class="login-box">
+
+
+            <div class="admin-icon">
+                👤
+            </div>
+
+
+            <h1>Admin Login</h1>
+
+            <p class="subtitle">
+                Login to manage the Alumni & Student Directory
+            </p>
+
+
+
+            <form onsubmit="adminLogin(event)">
+
+
+                <!-- Username -->
+
+                <div class="form-group">
+
+                    <label>
+                        Admin Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Login -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    Login
+                </button>
+
+
+            </form>
+
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Back to Home
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Alumni & Student Directory. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function adminLogin(event) {
+
+            event.preventDefault();
+
+            let username =
+                document.getElementById("username").value;
+
+            let password =
+                document.getElementById("password").value;
+
+
+            /*
+                DEMO LOGIN ONLY
+
+                Later:
+                Java Spring Boot
+                +
+                MySQL
+                +
+                Secure password authentication
+            */
+
+            if (
+                username === "admin" &&
+                password === "admin123"
+            ) {
+
+                alert("Login successful!");
+
+                window.location.href =
+                    "admin-dashboard.html";
+
+            } else {
+
+                alert(
+                    "Invalid username or password!"
+                );
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```

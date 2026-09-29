@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Students - Alumni & Student Directory</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f8fc;
+            color: #222;
+        }
+
+        /* Header */
+        header {
+            background: #0b4f9c;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h2 {
+            font-size: 22px;
+        }
+
+        .logo p {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: white;
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .page-header h1 {
+            color: #0b4f9c;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+        /* Search Section */
+        .search-section {
+            width: 90%;
+            max-width: 1100px;
+            margin: 25px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            background: #0b4f9c;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #083b75;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filters select {
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            min-width: 180px;
+        }
+
+        /* Student Cards */
+        .students-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto 60px;
+        }
+
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            padding-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .student-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .student-card h3 {
+            color: #0b4f9c;
+            margin-top: 15px;
+        }
+
+        .student-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 6px 0;
+        }
+
+        .student-card .year {
+            display: inline-block;
+            background: #e8f1ff;
+            color: #0b4f9c;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 8px 0;
+        }
+
+        .profile-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 9px 18px;
+            background: #0b4f9c;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        footer {
+            background: #083b75;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .students-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+            <h2>Alumni & Student Directory</h2>
+            <p>Reconnect • Support • Grow</p>
+        </div>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="alumni.html">Alumni</a>
+            <a href="students.html">Current Students</a>
+            <a href="register.html">Register</a>
+            <a href="contact.html">Contact</a>
+            <a href="admin-login.html">Admin Login</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Page Header -->
+    <section class="page-header">
+
+        <h1>Current Students</h1>
+
+        <p>
+            Explore our current students and connect with the student community.
+        </p>
+
+    </section>
+
+
+    <!-- Search & Filter -->
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by name or register number..."
+            >
+
+            <button onclick="searchStudents()">
+                Search
+            </button>
+
+        </div>
+
+
+        <div class="filters">
+
+            <select id="department">
+                <option value="">All Departments</option>
+                <option value="CSE">Computer Science & Engineering</option>
+                <option value="ECE">Electronics & Communication</option>
+                <option value="IT">Information Technology</option>
+                <option value="EEE">Electrical & Electronics</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+            </select>
+
+
+            <select id="year">
+                <option value="">All Years</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- Students -->
+    <section class="students-container">
+
+        <div class="students-grid">
+
+            <!-- Student 1 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+                <h3>Ananya S</h3>
+
+                <p>CSE</p>
+
+                <p>Register No: CSE2025001</p>
+
+                <span class="year">3rd Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+
+            <!-- Student 2 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+                <h3>Arun K</h3>
+
+                <p>ECE</p>
+
+                <p>Register No: ECE2025002</p>
+
+                <span class="year">2nd Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+
+            <!-- Student 3 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/women/68.jpg">
+
+                <h3>Priya R</h3>
+
+                <p>IT</p>
+
+                <p>Register No: IT2025003</p>
+
+                <span class="year">4th Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+
+            <!-- Student 4 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/men/45.jpg">
+
+                <h3>Rahul M</h3>
+
+                <p>Mechanical</p>
+
+                <p>Register No: MECH2025004</p>
+
+                <span class="year">3rd Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+
+            <!-- Student 5 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/women/33.jpg">
+
+                <h3>Divya P</h3>
+
+                <p>CSE</p>
+
+                <p>Register No: CSE2025005</p>
+
+                <span class="year">2nd Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+
+            <!-- Student 6 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/men/52.jpg">
+
+                <h3>Karthik V</h3>
+
+                <p>EEE</p>
+
+                <p>Register No: EEE2025006</p>
+
+                <span class="year">4th Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+
+            <!-- Student 7 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/women/51.jpg">
+
+                <h3>Keerthana M</h3>
+
+                <p>ECE</p>
+
+                <p>Register No: ECE2025007</p>
+
+                <span class="year">1st Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+
+            <!-- Student 8 -->
+            <div class="student-card">
+
+                <img src="https://randomuser.me/api/portraits/men/62.jpg">
+
+                <h3>Vignesh R</h3>
+
+                <p>IT</p>
+
+                <p>Register No: IT2025008</p>
+
+                <span class="year">3rd Year</span>
+
+                <br>
+
+                <a href="#" class="profile-btn">
+                    View Profile
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Alumni & Student Directory. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function searchStudents() {
+
+            let search = document.getElementById("searchInput").value;
+
+            let department =
+                document.getElementById("department").value;
+
+            let year =
+                document.getElementById("year").value;
+
+            alert(
+                "Search: " + search +
+                "\nDepartment: " + department +
+                "\nYear: " + year
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
